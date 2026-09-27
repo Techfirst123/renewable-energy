@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import HeroSlider from "../components/HeroSlider";
 import ServiceIcons from "../components/ServiceIcons";
+import ValueChain from "../components/ValueChain";
 
 const capabilities = [
   {
@@ -377,48 +378,9 @@ function Home() {
         </div>
       </section>
 
-      {/* ================= ECOSYSTEM ================= */}
+      {/* ================= VALUE CHAIN ================= */}
 
-      <section className="section ecosystem">
-        <div className="container ecosystem-wrap">
-          <div className="ecosystem-copy reveal">
-            <div className="eyebrow">
-              <i></i>
-              COMPLETE VALUE CHAIN
-            </div>
-
-            <h2>
-              From waste stream to <em>usable energy.</em>
-            </h2>
-
-            <p>
-              A CBG project is an interconnected ecosystem. RREV’s stated
-              capability spans feedstock assessment, anaerobic digestion,
-              upgrading, compression, transportation, approvals, off-take and
-              long-term operations.
-            </p>
-          </div>
-
-          <div className="chain reveal">
-            {[
-              "Feedstock",
-              "Digestion",
-              "Biogas",
-              "Upgrading",
-              "Compression",
-              "Off-take",
-            ].map((x, i) => (
-              <div className="chain-node" key={x}>
-                <span>{String(i + 1).padStart(2, "0")}</span>
-
-                <b>{x}</b>
-
-                {i < 5 && <i>→</i>}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ValueChain />
 
       {/* ================= PROCESS ================= */}
 
@@ -545,11 +507,11 @@ function Home() {
             ))}
           </div>
 
-          {/* <div className="home-page-link">
+          <div className="home-page-link">
             <Link to="/leadership" className="text-link">
               Meet our leadership team <span>↗</span>
             </Link>
-          </div> */}
+          </div>
         </div>
       </section>
 
