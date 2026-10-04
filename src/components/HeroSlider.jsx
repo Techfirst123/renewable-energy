@@ -18,7 +18,7 @@ const slides = [
         Turning organic waste into <em>compressed biogas.</em>
       </>
     ),
-    text: "Turnkey CBG plants — feedstock, digestion, upgrading, compression and PESO approvals — built to run reliably for decades.",
+    text: "CBG plants in 3, 6 and 12 TPD capacities — feasibility and DPR, approvals, civil execution and operations, delivered with proven technology partners.",
     cta: { to: "/capabilities", label: "Explore Bio-CNG" },
   },
   {
@@ -54,7 +54,7 @@ const stack = [
 ];
 
 const stats = [
-  ["12 TPD", "CBG plant proposed"],
+  ["3 / 6 / 12", "TPD CBG plant capacities"],
   ["29+ yrs", "Renewable energy expertise"],
   ["30+ yrs", "Project execution expertise"],
 ];

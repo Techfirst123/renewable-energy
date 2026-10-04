@@ -4,39 +4,39 @@ import { Link } from "react-router-dom";
 const capabilities = [
   {
     number: "01",
-    title: "Feedstock & Supply Chain",
-    text: "Assessing organic resources, availability, logistics and long-term feedstock security.",
-    image: "/assets/img1.jpg",
-  },
-  {
-    number: "02",
-    title: "Biogas & CBG",
-    text: "Developing integrated biogas and compressed biogas solutions designed around reliable resource utilisation.",
-    image: "/assets/img2.jpg",
-  },
-  {
-    number: "03",
-    title: "Project Development",
-    text: "From feasibility and planning to technical coordination and commercial project structuring.",
-    image: "/assets/img3.jpg",
-  },
-  {
-    number: "04",
-    title: "Engineering",
-    text: "Coordinating engineering requirements to create safe, efficient and execution-ready projects.",
-    image: "/assets/img4.jpg",
-  },
-  {
-    number: "05",
-    title: "Infrastructure",
-    text: "Civil and infrastructure capabilities supporting energy and industrial project delivery.",
+    title: "Project Development & DPR",
+    text: "Feasibility studies, feedstock and site assessment, Detailed Project Reports and financial structuring for CBG and solar projects.",
     image: "/assets/about-panel.jpg",
   },
   {
+    number: "02",
+    title: "Approvals & Government Coordination",
+    text: "Statutory clearances, PESO and DISCOM liaison, subsidy documentation and institutional stakeholder engagement.",
+    image: "/assets/img7.jpg",
+  },
+  {
+    number: "03",
+    title: "Civil & Infrastructure Execution",
+    text: "Civil construction, site execution, erection, contractor coordination, quality control and schedule management.",
+    image: "/assets/img2.jpg",
+  },
+  {
+    number: "04",
+    title: "Solar EPC",
+    text: "Rooftop, ground-mounted and hybrid solar systems — survey, design, procurement, installation, grid connection and commissioning.",
+    image: "/assets/solar-1.jpg",
+  },
+  {
+    number: "05",
+    title: "O&M & Advisory",
+    text: "Operations support, performance monitoring, PMU services, operator training and long-term reporting.",
+    image: "/assets/solar-7.jpg",
+  },
+  {
     number: "06",
-    title: "Operations",
-    text: "Building projects with operational reliability, maintainability and long-term performance in mind.",
-    image: "/assets/img6.jpg",
+    title: "Technology Partner Management",
+    text: "Selection and coordination of proven process-technology suppliers for digestion, upgrading and compression packages.",
+    image: "/assets/img3.jpg",
   },
 ];
 
@@ -119,9 +119,17 @@ function Capabilities() {
 
           <div className="value-chain-heading">
             <h2>
-              One connected system.
-              <span> Multiple opportunities.</span>
+              The CBG chain we
+              <span> build projects around.</span>
             </h2>
+          </div>
+
+          <div className="value-chain-note">
+            <p>
+              RREV develops, builds and supports the plant. Process packages for
+              digestion, upgrading and compression are supplied by established
+              technology partners, selected and coordinated by us.
+            </p>
           </div>
 
           <div className="value-chain-large">

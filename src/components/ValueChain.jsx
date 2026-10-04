@@ -98,9 +98,11 @@ function ValueChain() {
           </h2>
 
           <p>
-            A CBG project is an interconnected ecosystem. RREV covers every link
-            — feedstock assessment, anaerobic digestion, upgrading, compression,
-            transportation, approvals, off-take and long-term operations.
+            A CBG project is an interconnected ecosystem. RREV develops, builds
+            and supports the plant across this chain — feasibility and DPR,
+            approvals, civil and site execution, and long-term operations.
+            Process packages for digestion, upgrading and compression come from
+            established technology partners we select and coordinate.
           </p>
 
           <Link to="/capabilities" className="vc-link">

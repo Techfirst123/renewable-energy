@@ -1,0 +1,192 @@
+/* =========================================================
+   BUSINESS TABS — Bio-CNG plant models / economics + Solar EPC
+   Self-contained; colours fall back to the RREV palette.
+========================================================= */
+.bt {
+  --bt-navy: var(--dark, #0b1f3a);
+  --bt-amber: var(--accent, #f5b324);
+  --bt-amber-deep: var(--sun-deep, #b87a00);
+  --bt-blue: var(--brand, #1463b8);
+  --bt-green: var(--bio, #2f9e5f);
+  --bt-line: #e3e8ef;
+  --bt-muted: #5d636c;
+
+  padding-block: clamp(72px, 9vw, 118px);
+  background: linear-gradient(180deg, #f7f9fc 0%, #eef2f7 100%);
+  color: var(--bt-navy);
+  font-family: var(--font-body, "DM Sans", system-ui, sans-serif);
+}
+.bt-inner { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+
+/* ---------- heading ---------- */
+.bt-head { max-width: 46rem; margin-bottom: 34px; }
+.bt-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--bt-amber-deep);
+}
+.bt-eyebrow i { width: 26px; height: 1px; background: currentColor; }
+.bt h2 {
+  margin: 18px 0 14px;
+  font-family: var(--font-display, "Manrope", system-ui, sans-serif);
+  font-size: clamp(30px, 3.8vw, 50px); font-weight: 800;
+  line-height: 1.05; letter-spacing: -0.035em; text-wrap: balance;
+}
+.bt h2 em { font-style: normal; color: var(--bt-blue); }
+.bt-head p { margin: 0; font-size: 16.5px; line-height: 1.75; color: var(--bt-muted); }
+
+/* ---------- tab switch ---------- */
+.bt-switch {
+  display: inline-flex; flex-wrap: wrap; gap: 6px; padding: 6px;
+  margin-bottom: 30px; border-radius: 999px;
+  background: #fff; border: 1px solid var(--bt-line);
+  box-shadow: 0 10px 30px rgba(11, 31, 58, 0.07);
+}
+.bt-tab {
+  border: 0; cursor: pointer; font: inherit; font-weight: 700; font-size: 14.5px;
+  padding: 12px 24px; border-radius: 999px; background: transparent;
+  color: var(--bt-muted); transition: background 0.25s, color 0.25s;
+}
+.bt-tab:hover { color: var(--bt-navy); }
+.bt-tab.active { background: var(--bt-green); color: #fff; }
+.bt-tab.solar.active { background: var(--bt-amber); color: #231800; }
+
+.bt-panel { display: grid; gap: 20px; animation: bt-fade 0.4s ease both; }
+@keyframes bt-fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* ---------- model cards ---------- */
+.bt-models {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 16px;
+}
+.bt-model {
+  position: relative;
+  display: grid; align-content: start; gap: 14px;
+  padding: 30px 26px;
+  background: #fff;
+  border: 1px solid var(--bt-line);
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(11, 31, 58, 0.06);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.bt-model:hover { transform: translateY(-4px); box-shadow: 0 24px 50px rgba(11, 31, 58, 0.12); }
+.bt-model.is-featured { border-color: var(--bt-green); }
+.bt-model.solar:hover { border-color: var(--bt-amber); }
+.bt-flag {
+  position: absolute; top: -11px; left: 26px;
+  padding: 4px 12px; border-radius: 999px;
+  background: var(--bt-green); color: #fff;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.bt-model h3 {
+  margin: 0;
+  font-family: var(--font-display, "Manrope", system-ui, sans-serif);
+  font-size: 30px; font-weight: 800; letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.bt-model.solar h3 { font-size: 21px; }
+.bt-model dl { margin: 0; display: grid; gap: 0; }
+.bt-model dl > div {
+  display: flex; justify-content: space-between; gap: 14px;
+  padding: 10px 0; border-bottom: 1px solid var(--bt-line);
+}
+.bt-model dl > div:last-child { border-bottom: 0; }
+.bt-model dt { font-size: 13.5px; color: var(--bt-muted); }
+.bt-model dd { margin: 0; font-size: 13.5px; font-weight: 700; text-align: right; }
+.bt-model-text { margin: 0; font-size: 14.5px; line-height: 1.7; color: var(--bt-muted); }
+.bt-points { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.bt-points li { display: flex; gap: 9px; font-size: 13.5px; }
+.bt-points li::before {
+  content: ""; flex: none; width: 7px; height: 7px; margin-top: 7px;
+  border-radius: 2px; background: var(--bt-amber); transform: rotate(45deg);
+}
+.bt-model-link {
+  justify-self: start; display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13.5px; font-weight: 700; color: var(--bt-blue); text-decoration: none;
+  border-bottom: 1px solid transparent; transition: border-color 0.2s, gap 0.2s;
+}
+.bt-model-link:hover { border-color: currentColor; gap: 12px; }
+
+/* ---------- tables ---------- */
+.bt-tables {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 16px;
+}
+.bt-table-card {
+  background: #fff; border: 1px solid var(--bt-line); border-radius: 18px;
+  padding: 26px; box-shadow: 0 16px 40px rgba(11, 31, 58, 0.06);
+}
+.bt-table-card h4 {
+  margin: 0 0 18px;
+  font-family: var(--font-display, "Manrope", system-ui, sans-serif);
+  font-size: 17px; font-weight: 700;
+}
+.bt-table-scroll { overflow-x: auto; }
+.bt-table-card table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.bt-table-card thead th {
+  text-align: left; padding: 10px 12px;
+  font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--bt-muted); border-bottom: 2px solid var(--bt-line); white-space: nowrap;
+}
+.bt-table-card tbody th {
+  text-align: left; padding: 11px 12px; font-weight: 600;
+  border-bottom: 1px solid var(--bt-line);
+}
+.bt-table-card tbody td {
+  padding: 11px 12px; border-bottom: 1px solid var(--bt-line);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.bt-table-card tbody tr:hover { background: #f6f9fb; }
+.bt-table-card tbody tr:last-child th,
+.bt-table-card tbody tr:last-child td { border-bottom: 0; }
+.bt-note { margin: 16px 0 0; font-size: 12.5px; line-height: 1.6; color: var(--bt-muted); }
+
+/* numbered scope list */
+.bt-steps { list-style: none; margin: 0; padding: 0; counter-reset: step; display: grid; gap: 14px; }
+.bt-steps li {
+  counter-increment: step; display: grid; gap: 3px;
+  padding-left: 40px; position: relative;
+}
+.bt-steps li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute; left: 0; top: 1px;
+  font-family: var(--font-display, "Manrope", system-ui, sans-serif);
+  font-size: 13px; font-weight: 800; color: var(--bt-amber-deep);
+  font-variant-numeric: tabular-nums;
+}
+.bt-steps b { font-size: 14.5px; }
+.bt-steps span { font-size: 13px; line-height: 1.6; color: var(--bt-muted); }
+
+/* ---------- highlight strip ---------- */
+.bt-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+  gap: 1px;
+  background: var(--bt-line);
+  border: 1px solid var(--bt-line);
+  border-radius: 18px;
+  overflow: hidden;
+}
+.bt-strip > div { background: var(--bt-navy); color: #fff; padding: 24px 22px; display: grid; gap: 6px; }
+.bt-strip b {
+  font-family: var(--font-display, "Manrope", system-ui, sans-serif);
+  font-size: 24px; font-weight: 800; color: var(--bt-green);
+  font-variant-numeric: tabular-nums;
+}
+.bt-strip.solar b { color: var(--bt-amber); }
+.bt-strip span { font-size: 13px; line-height: 1.5; color: rgba(255, 255, 255, 0.72); }
+
+@media (max-width: 900px) {
+  .bt-tables { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .bt-inner { width: calc(100% - 32px); }
+  .bt-tab { padding: 11px 16px; font-size: 13.5px; }
+  .bt-model { padding: 24px 20px; }
+  .bt-table-card { padding: 20px 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bt-panel, .bt-model { animation: none; transition: none; }
+}

@@ -3,49 +3,43 @@ import { Link } from "react-router-dom";
 import HeroSlider from "../components/HeroSlider";
 import ServiceIcons from "../components/ServiceIcons";
 import ValueChain from "../components/ValueChain";
+import BusinessTabs from "../components/BusinessTabs";
 
 const capabilities = [
   {
     n: "01",
-    title: "Feedstock & Supply Chain",
-    text: "Assessment, sourcing strategy and supply-chain coordination for reliable project inputs.",
-    icon: "↗",
-    image: "/assets/img1.jpg",
+    title: "Project Development & DPR",
+    text: "Feasibility studies, feedstock assessment, DPRs, financial structuring and subsidy documentation.",
+    icon: "◎",
+    image: "/assets/about-panel.jpg",
   },
   {
     n: "02",
-    title: "Anaerobic Digestion",
-    text: "Biogas generation, process optimization and practical technology understanding.",
-    icon: "◌",
-    image: "/assets/img2.jpg",
-  },
-  {
-    n: "03",
-    title: "Gas Upgrading",
-    text: "Purification, compression, storage and dispensing systems across the CBG value chain.",
-    icon: "⌁",
-    image: "/assets/img3.jpg",
-  },
-  {
-    n: "04",
-    title: "Project Execution",
-    text: "Engineering, procurement, construction, commissioning and operational stabilization.",
-    icon: "▦",
-    image: "/assets/img4.jpg",
-  },
-  {
-    n: "05",
-    title: "Compliance & Approvals",
-    text: "PESO approvals, regulatory coordination and institutional stakeholder engagement.",
+    title: "Approvals & Coordination",
+    text: "Statutory clearances, PESO and DISCOM liaison, government and stakeholder coordination.",
     icon: "✓",
     image: "/assets/img7.jpg",
   },
   {
-    n: "06",
-    title: "Operations & Optimization",
-    text: "Plant O&M, performance monitoring, by-product management and long-term reliability.",
+    n: "03",
+    title: "Civil & Infrastructure Execution",
+    text: "Site works, civil construction, erection, contractor coordination, QA/QC and schedule control.",
+    icon: "▦",
+    image: "/assets/img2.jpg",
+  },
+  {
+    n: "04",
+    title: "Solar EPC",
+    text: "Rooftop, ground-mounted and hybrid solar — survey, design, procurement, installation and commissioning.",
+    icon: "☀",
+    image: "/assets/solar-1.jpg",
+  },
+  {
+    n: "05",
+    title: "O&M & Advisory",
+    text: "Operations support, performance monitoring, PMU services, operator training and reporting.",
     icon: "◒",
-    image: "/assets/img6.jpg",
+    image: "/assets/solar-7.jpg",
   },
 ];
 
@@ -381,6 +375,10 @@ function Home() {
       {/* ================= VALUE CHAIN ================= */}
 
       <ValueChain />
+
+      {/* ================= BUSINESS LINES (tabs) ================= */}
+
+      <BusinessTabs />
 
       {/* ================= PROCESS ================= */}
 
