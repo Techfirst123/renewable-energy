@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SolarProcess from "../components/SolarProcess";
 
 const services = [
   {
@@ -38,15 +39,6 @@ const services = [
     text: "Module cleaning, preventive maintenance, remote monitoring and monthly generation reporting.",
     image: "/assets/solar-7.jpg",
   },
-];
-
-const stages = [
-  ["01", "Site assessment", "Survey, shadow analysis, load profile and energy-yield study."],
-  ["02", "Design & engineering", "PV layout, structure design, string/inverter sizing, SLD and protection."],
-  ["03", "Procurement", "Modules, inverters, structures and BOS with pre-dispatch quality checks."],
-  ["04", "Installation", "Structure erection, module mounting, cabling, earthing and LA."],
-  ["05", "Commissioning", "Testing, grid synchronisation, net-metering and handover."],
-  ["06", "Operations", "Cleaning, maintenance, monitoring and performance reporting."],
 ];
 
 function SolarEPC() {
@@ -117,42 +109,8 @@ function SolarEPC() {
       </section>
 
       {/* PROCESS */}
-      <section className="section soft-section">
-        <div className="container">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow sun">
-                <i></i>
-                HOW A SOLAR PROJECT RUNS
-              </div>
 
-              <h2>
-                Six stages.
-                <span> One accountable team.</span>
-              </h2>
-            </div>
-
-            <p>
-              Milestone-based execution with continuous monitoring, QA/QC and
-              risk mitigation at every step.
-            </p>
-          </div>
-
-          <div className="execution-timeline">
-            {stages.map(([no, title, text]) => (
-              <div className="execution-stage" key={no}>
-                <div className="execution-stage-top">
-                  <span>{no}</span>
-                  <div></div>
-                </div>
-
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SolarProcess />
 
       {/* CTA */}
       <section className="section page-cta">
