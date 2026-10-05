@@ -1,38 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-const stages = [
-  {
-    no: "01",
-    title: "Concept",
-    text: "Understanding the opportunity, resource base, project objectives and overall feasibility.",
-  },
-  {
-    no: "02",
-    title: "Engineering",
-    text: "Developing the technical framework, systems, layouts and engineering requirements.",
-  },
-  {
-    no: "03",
-    title: "Procurement",
-    text: "Coordinating equipment, vendors, materials and project requirements with a focus on quality.",
-  },
-  {
-    no: "04",
-    title: "Construction",
-    text: "Managing site execution, civil works, installation, safety and schedule coordination.",
-  },
-  {
-    no: "05",
-    title: "Commissioning",
-    text: "Bringing systems online through testing, integration, performance checks and controlled start-up.",
-  },
-  {
-    no: "06",
-    title: "Operations",
-    text: "Supporting reliable plant performance with operational discipline and continuous improvement.",
-  },
-];
+import ExecutionTabs from "../components/ExecutionTabs";
 
 function Execution() {
   return (
@@ -83,91 +51,9 @@ function Execution() {
         </div>
       </section>
 
-      {/* PROCESS */}
-      <section className="section soft-section">
-        <div className="container">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow">
-                <i></i>
-                PROJECT LIFECYCLE
-              </div>
+      {/* PROJECT LIFECYCLE + PRINCIPLES (tabs) */}
 
-              <h2>
-                Six stages.
-                <span> One connected process.</span>
-              </h2>
-            </div>
-
-            <p>
-              A structured pathway designed to maintain clarity, accountability
-              and execution quality throughout the project.
-            </p>
-          </div>
-
-          <div className="execution-timeline">
-            {stages.map((stage) => (
-              <div className="execution-stage" key={stage.no}>
-                <div className="execution-stage-top">
-                  <span>{stage.no}</span>
-                  <div></div>
-                </div>
-
-                <h3>{stage.title}</h3>
-                <p>{stage.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PRINCIPLES */}
-      <section className="section">
-        <div className="container">
-          <div className="eyebrow">
-            <i></i>
-            EXECUTION PRINCIPLES
-          </div>
-
-          <div className="principles-grid">
-            <div>
-              <span>01</span>
-              <h3>Safety first</h3>
-              <p>
-                Safety and responsible site practices remain fundamental to
-                project delivery.
-              </p>
-            </div>
-
-            <div>
-              <span>02</span>
-              <h3>Quality focused</h3>
-              <p>
-                Engineering and construction decisions are made with
-                reliability and long-term performance in mind.
-              </p>
-            </div>
-
-            <div>
-              <span>03</span>
-              <h3>Schedule discipline</h3>
-              <p>
-                Clear sequencing and coordination help maintain momentum from
-                planning through commissioning.
-              </p>
-            </div>
-
-            <div>
-              <span>04</span>
-              <h3>Operational thinking</h3>
-              <p>
-                We consider how the plant will perform long after construction
-                has been completed.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ExecutionTabs />
 
       {/* CTA */}
       <section className="section page-cta">

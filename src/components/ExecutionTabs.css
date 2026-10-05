@@ -1,0 +1,209 @@
+/* =========================================================
+   EXECUTION TABS — Bootstrap-5 style pills, stepper and cards
+   Colours fall back to the RREV palette.
+========================================================= */
+.ex {
+  --ex-navy: var(--dark, #0b1f3a);
+  --ex-blue: var(--brand, #1463b8);
+  --ex-amber: var(--accent, #f5b324);
+  --ex-amber-deep: var(--sun-deep, #b87a00);
+  --ex-green: var(--bio, #2f9e5f);
+  --ex-line: #e2e8f0;
+  --ex-muted: #5d636c;
+
+  padding-block: clamp(70px, 9vw, 112px);
+  background: linear-gradient(180deg, #ffffff 0%, #f4f7fb 100%);
+  color: var(--ex-navy);
+  font-family: var(--font-body, "DM Sans", system-ui, sans-serif);
+}
+.ex-inner { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+
+/* ---------- nav-pills ---------- */
+.ex-nav {
+  display: inline-flex; flex-wrap: wrap; gap: 6px; padding: 6px;
+  border-radius: 999px; background: #fff; border: 1px solid var(--ex-line);
+  box-shadow: 0 10px 28px rgba(11, 31, 58, 0.07); margin-bottom: 34px;
+}
+.ex-pill {
+  border: 0; cursor: pointer; font: inherit; font-weight: 700; font-size: 14.5px;
+  padding: 12px 24px; border-radius: 999px; background: transparent; color: var(--ex-muted);
+  transition: background 0.25s, color 0.25s;
+}
+.ex-pill:hover { color: var(--ex-navy); }
+.ex-pill.active { background: var(--ex-navy); color: #fff; }
+
+.ex-panel { animation: ex-fade 0.35s ease both; }
+@keyframes ex-fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.ex-head { max-width: 46rem; margin-bottom: 34px; }
+.ex-head h2 {
+  margin: 0 0 12px;
+  font-family: var(--font-display, "Manrope", system-ui, sans-serif);
+  font-size: clamp(28px, 3.6vw, 46px); font-weight: 800;
+  line-height: 1.06; letter-spacing: -0.035em; text-wrap: balance;
+}
+.ex-head h2 em { font-style: normal; color: var(--ex-blue); }
+.ex-head p { margin: 0; font-size: 16px; line-height: 1.75; color: var(--ex-muted); }
+
+/* ---------- stepper ---------- */
+.ex-stepper {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 26px;
+}
+.ex-rail {
+  position: absolute; left: 0; right: 0; top: 21px; height: 3px;
+  border-radius: 3px; background: var(--ex-line); overflow: hidden;
+}
+.ex-rail span {
+  display: block; height: 100%; border-radius: 3px;
+  background: linear-gradient(90deg, var(--ex-green), var(--ex-amber));
+  transition: width 0.45s cubic-bezier(.2,.7,.2,1);
+}
+.ex-step {
+  position: relative; z-index: 1;
+  display: grid; justify-items: center; gap: 10px;
+  border: 0; background: none; cursor: pointer; font: inherit; padding: 0;
+  color: var(--ex-muted);
+}
+.ex-dot {
+  display: grid; place-items: center;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: #fff; border: 2px solid var(--ex-line);
+  font-weight: 800; font-size: 14px; font-variant-numeric: tabular-nums;
+  color: var(--ex-muted);
+  box-shadow: 0 6px 16px rgba(11, 31, 58, 0.08);
+  transition: transform 0.25s, background 0.25s, border-color 0.25s, color 0.25s;
+}
+.ex-step:hover .ex-dot { transform: translateY(-2px); border-color: var(--ex-blue); color: var(--ex-blue); }
+.ex-step.done .ex-dot { background: var(--ex-green); border-color: var(--ex-green); color: #fff; }
+.ex-step.active .ex-dot {
+  background: var(--ex-navy); border-color: var(--ex-navy); color: var(--ex-amber);
+  transform: scale(1.08);
+}
+.ex-step-name { font-size: 13.5px; font-weight: 600; text-align: center; }
+.ex-step.active .ex-step-name { color: var(--ex-navy); font-weight: 800; }
+
+/* ---------- detail card ---------- */
+.ex-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  background: #fff;
+  border: 1px solid var(--ex-line);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 44px rgba(11, 31, 58, 0.08);
+}
+.ex-card-body { padding: clamp(24px, 3vw, 38px); }
+.ex-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.ex-badge {
+  padding: 6px 13px; border-radius: 999px;
+  background: var(--ex-navy); color: #fff;
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.ex-badge.soft { background: #eef3f9; color: var(--ex-muted); }
+.ex-card-body h3 {
+  margin: 0 0 12px;
+  font-family: var(--font-display, "Manrope", system-ui, sans-serif);
+  font-size: clamp(24px, 2.4vw, 32px); font-weight: 800; letter-spacing: -0.03em;
+}
+.ex-card-body > p { margin: 0; font-size: 15.5px; line-height: 1.8; color: var(--ex-muted); max-width: 52ch; }
+.ex-progress {
+  margin-top: 26px; height: 8px; border-radius: 8px; background: #eef3f9; overflow: hidden;
+}
+.ex-progress span {
+  display: block; height: 100%; border-radius: 8px;
+  background: linear-gradient(90deg, var(--ex-green), var(--ex-amber));
+  transition: width 0.45s cubic-bezier(.2,.7,.2,1);
+}
+
+.ex-card-side {
+  padding: clamp(24px, 3vw, 38px);
+  background: linear-gradient(160deg, #f7fafc, #eef3f9);
+  border-left: 1px solid var(--ex-line);
+  display: grid; align-content: start; gap: 14px;
+}
+.ex-card-side h4 {
+  margin: 0;
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ex-amber-deep);
+}
+.ex-card-side ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ex-card-side li { display: flex; gap: 10px; font-size: 14.5px; line-height: 1.5; }
+.ex-card-side li::before {
+  content: "✓"; flex: none; width: 20px; height: 20px; margin-top: 1px;
+  display: grid; place-items: center; border-radius: 50%;
+  background: rgba(47, 158, 95, 0.14); color: var(--ex-green);
+  font-size: 11px; font-weight: 800;
+}
+.ex-link {
+  justify-self: start; display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 6px; font-size: 14px; font-weight: 700; color: var(--ex-blue);
+  text-decoration: none; border-bottom: 1px solid transparent;
+  transition: border-color 0.2s, gap 0.2s;
+}
+.ex-link:hover { border-color: currentColor; gap: 12px; }
+
+/* ---------- principles ---------- */
+.ex-principles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 16px;
+}
+.ex-principle {
+  position: relative;
+  display: grid; align-content: start; gap: 12px;
+  padding: 30px 26px 28px;
+  background: #fff;
+  border: 1px solid var(--ex-line);
+  border-left: 4px solid var(--tone, var(--ex-blue));
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(11, 31, 58, 0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.ex-principle:hover { transform: translateY(-4px); box-shadow: 0 24px 50px rgba(11, 31, 58, 0.12); }
+.ex-principle.tone-green { --tone: var(--ex-green); }
+.ex-principle.tone-blue { --tone: var(--ex-blue); }
+.ex-principle.tone-amber { --tone: var(--ex-amber); }
+.ex-principle.tone-navy { --tone: var(--ex-navy); }
+
+.ex-pic {
+  display: grid; place-items: center;
+  width: 48px; height: 48px; border-radius: 12px;
+  background: color-mix(in srgb, var(--tone) 14%, #fff);
+  color: var(--tone);
+}
+.ex-pic svg { width: 26px; height: 26px; }
+.ex-pno {
+  position: absolute; top: 20px; right: 22px;
+  font-family: var(--font-display, "Manrope", system-ui, sans-serif);
+  font-size: 26px; font-weight: 800; color: #eef2f7;
+  font-variant-numeric: tabular-nums;
+}
+.ex-principle h3 {
+  margin: 0;
+  font-family: var(--font-display, "Manrope", system-ui, sans-serif);
+  font-size: 18.5px; font-weight: 700; letter-spacing: -0.01em;
+}
+.ex-principle p { margin: 0; font-size: 14px; line-height: 1.7; color: var(--ex-muted); }
+
+.ex :focus-visible { outline: 3px solid var(--ex-amber); outline-offset: 3px; border-radius: 8px; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .ex-card { grid-template-columns: 1fr; }
+  .ex-card-side { border-left: 0; border-top: 1px solid var(--ex-line); }
+  .ex-stepper { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 8px; }
+  .ex-rail { display: none; }
+}
+@media (max-width: 600px) {
+  .ex-inner { width: calc(100% - 32px); }
+  .ex-pill { padding: 11px 16px; font-size: 13.5px; }
+  .ex-stepper { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ex-dot { width: 40px; height: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ex-panel, .ex-principle, .ex-dot, .ex-rail span, .ex-progress span { animation: none; transition: none; }
+}
