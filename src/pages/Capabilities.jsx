@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ChainFlow from "../components/ChainFlow";
 
 const capabilities = [
   {
@@ -110,46 +111,8 @@ function Capabilities() {
       </section>
 
       {/* VALUE CHAIN */}
-      <section className="section soft-section">
-        <div className="container">
-          <div className="eyebrow">
-            <i></i>
-            CBG VALUE CHAIN
-          </div>
 
-          <div className="value-chain-heading">
-            <h2>
-              The CBG chain we
-              <span> build projects around.</span>
-            </h2>
-          </div>
-
-          <div className="value-chain-note">
-            <p>
-              RREV develops, builds and supports the plant. Process packages for
-              digestion, upgrading and compression are supplied by established
-              technology partners, selected and coordinated by us.
-            </p>
-          </div>
-
-          <div className="value-chain-large">
-            {[
-              ["01", "Feedstock", "Organic resources"],
-              ["02", "Digestion", "Anaerobic process"],
-              ["03", "Biogas", "Raw gas production"],
-              ["04", "Upgrading", "Gas purification"],
-              ["05", "Compression", "CBG preparation"],
-              ["06", "Off-take", "Market delivery"],
-            ].map(([num, title, text]) => (
-              <div className="value-step" key={num}>
-                <span>{num}</span>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ChainFlow />
 
       {/* CTA */}
       <section className="section page-cta">

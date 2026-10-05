@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
 
+import PageLoader from "./components/PageLoader";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import ScrollToTop from "./components/ScrollToTop";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -13,13 +13,12 @@ import Leadership from "./pages/Leadership";
 import Contact from "./pages/Contact";
 import SolarEPC from "./pages/SolarEPC";
 import Projects from "./pages/Projects";
-import NotFound from "./pages/NotFound";
 
 function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop />
       <div className="site">
+        <PageLoader />
         <Navbar />
 
         <main>
@@ -28,13 +27,10 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/capabilities" element={<Capabilities />} />
             <Route path="/execution" element={<Execution />} />
-            {/* <Route path="/leadership" element={<Leadership />} /> */}
+            <Route path="/leadership" element={<Leadership />} />
             <Route path="/solar-epc" element={<SolarEPC />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
-
-            {/* Any URL not listed above */}
-            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
 
