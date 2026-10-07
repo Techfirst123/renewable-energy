@@ -10,8 +10,8 @@ import "./HeroSlider.css";
 
 const slides = [
   {
-    image: "/assets/hero-bg.jpg",
-    tag: "Bio-CNG / CBG",
+    image: "/assets/hero-cbg-domes.jpg",
+    tag: "CBG",
     tone: "bio",
     title: (
       <>
@@ -19,7 +19,7 @@ const slides = [
       </>
     ),
     text: "CBG plants in 3, 6 and 12 TPD capacities — feasibility and DPR, approvals, civil execution and operations, delivered with proven technology partners.",
-    cta: { to: "/capabilities", label: "Explore Bio-CNG" },
+    cta: { to: "/capabilities", label: "Explore CBG" },
   },
   {
     image: "/assets/hero-solar-field.jpg",
@@ -151,7 +151,7 @@ function HeroSlider() {
             </figure>
           ))}
           <div className="hx-chip">
-            <b>Bio-CNG</b>
+            <b>CBG</b>
             <span>+</span>
             <b>Solar EPC</b>
           </div>

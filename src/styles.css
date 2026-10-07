@@ -6,7 +6,7 @@
   --muted: #5d636c;
   --brand: #1463b8;        /* primary: solar-panel blue (links, emphasis, primary buttons) */
   --accent: #f5b324;       /* accent: sun amber (highlights on dark, CTAs) */
-  --bio: #2f9e5f;          /* biogas green — used only for Bio-CNG / CBG specific items */
+  --bio: #2f9e5f;          /* biogas green — used only for CBG specific items */
   --bio-light: #7fd6a2;
   --cream: #eef1f6;
   --white: #fff;
@@ -3561,7 +3561,7 @@ img { max-width: 100%; }
   content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--sun); transform: translateY(-1px);
 }
 
-/* ---------- Home: process track switch (Bio-CNG / Solar) ---------- */
+/* ---------- Home: process track switch (CBG / Solar) ---------- */
 .process-track-switch {
   display: inline-flex; flex-wrap: wrap; gap: 6px; padding: 6px;
   margin-bottom: 28px; border-radius: 999px; background: #e6e9ee;

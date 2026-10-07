@@ -4,7 +4,7 @@ import "./BusinessTabs.css";
 
 /*
   Two business lines in one tabbed block:
-  1) Bio-CNG / CBG plants — 3 / 6 / 12 TPD models + plant economics comparison
+  1) CBG plants — 3 / 6 / 12 TPD models + plant economics comparison
   2) Solar EPC — rooftop and grid-connected (ground-mount) solutions
 
   NOTE: all commercial figures below are indicative industry references for
@@ -113,7 +113,7 @@ function BusinessTabs() {
             className={`bt-tab ${tab === "cbg" ? "active" : ""}`}
             onClick={() => setTab("cbg")}
           >
-            Bio-CNG / CBG Plants
+            CBG Plants
           </button>
           <button
             type="button"

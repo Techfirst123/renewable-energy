@@ -45,10 +45,10 @@ function Navbar() {
       path: "/projects",
       label: "Projects",
     },
-    // {
-    //   path: "/leadership",
-    //   label: "Leadership",
-    // },
+    {
+      path: "/leadership",
+      label: "Leadership",
+    },
   ];
 
   return (
@@ -56,7 +56,7 @@ function Navbar() {
       {/* TOP INFORMATION BAR */}
       <div className="topline">
         <span>RENEWABLE RISE ENERGY VENTURE</span>
-        <span>Bio-CNG Plants • Solar EPC • Sustainable Infrastructure</span>
+        <span>CBG Plants • Solar EPC • Sustainable Infrastructure</span>
       </div>
 
       {/* NAVBAR */}

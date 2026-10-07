@@ -21,7 +21,7 @@ const photos = [
 
 const filters = [
   ["all", "All projects"],
-  ["cbg", "Bio-CNG / CBG"],
+  ["cbg", "CBG"],
   ["solar", "Solar EPC"],
 ];
 
@@ -71,7 +71,7 @@ function Projects() {
           </h1>
 
           <p>
-            Bio-CNG plant systems and solar installations — from digesters and
+            CBG plant systems and solar installations — from digesters and
             gas-holders to rooftop and ground-mounted arrays.
           </p>
         </div>
@@ -102,7 +102,7 @@ function Projects() {
               <button type="button" className="photo-tile" key={p.src} onClick={() => setOpen(i)}>
                 <img src={p.src} alt={p.title} loading="lazy" />
                 <span className="photo-caption">
-                  <small className={p.type}>{p.type === "cbg" ? "Bio-CNG" : "Solar EPC"}</small>
+                  <small className={p.type}>{p.type === "cbg" ? "CBG" : "Solar EPC"}</small>
                   {p.title}
                 </span>
               </button>

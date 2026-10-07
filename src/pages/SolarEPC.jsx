@@ -62,7 +62,7 @@ function SolarEPC() {
           <p>
             RREV’s solar EPC practice delivers rooftop and ground-mounted
             systems end-to-end — the same execution discipline we bring to
-            Bio-CNG plants, applied to clean power generation.
+            CBG plants, applied to clean power generation.
           </p>
         </div>
       </section>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import HeroSlider from "../components/HeroSlider";
 import ServiceIcons from "../components/ServiceIcons";
 import ValueChain from "../components/ValueChain";
+import LeaderGrid from "../components/LeaderGrid";
 import BusinessTabs from "../components/BusinessTabs";
 
 const capabilities = [
@@ -52,25 +53,6 @@ const stages = [
   ["06", "Operations", "O&M, monitoring and performance optimization"],
 ];
 
-const leaders = [
-  {
-    initials: "AM",
-    name: "Mr. Mohd Asim Mirza",
-    role: "Renewable Energy, Bioenergy & CBG Specialist",
-    years: "29+",
-    text: "Experience across renewable energy, biogas, climate change, circular economy, environmental management and sustainable development.",
-    tags: ["CBG & Biogas", "Policy", "PMU", "Government Coordination"],
-  },
-  {
-    initials: "MS",
-    name: "Mr. M. S. Shaikhu",
-    role: "Civil Engineering & Project Execution Expert",
-    years: "30+",
-    text: "Extensive experience in infrastructure, hydropower, renewable energy, construction management and large-scale project execution.",
-    tags: ["Civil Execution", "Site Management", "Quality", "Schedule"],
-  },
-];
-
 function Icon({ name }) {
   return <span className="icon-box">{name}</span>;
 }
@@ -105,11 +87,11 @@ function useReveal() {
 }
 
 
-/* ================= EXECUTION STAGES (Bio-CNG + Solar) ================= */
+/* ================= EXECUTION STAGES (CBG + Solar) ================= */
 
 const processTracks = {
   cbg: {
-    label: "Bio-CNG / CBG Plant",
+    label: "CBG Plant",
     stages: [
       { no: "01", title: "Concept", image: "/assets/img1.jpg", description: "Feedstock assessment, site study and feasibility direction — supported by continuous progress review, quality controls and risk mitigation." },
       { no: "02", title: "Engineering", image: "/assets/img2.jpg", description: "Process, civil and mechanical engineering for digesters, gas upgrading and compression — an execution-ready project framework." },
@@ -398,7 +380,7 @@ function Home() {
             </div>
 
             <p>
-              Whether it is a Bio-CNG plant or a solar installation, RREV
+              Whether it is a CBG plant or a solar installation, RREV
               follows the same disciplined path — scheduling, milestones,
               resource optimisation, monitoring, QA/QC and risk mitigation.
             </p>
@@ -449,69 +431,7 @@ function Home() {
 
       {/* ================= LEADERSHIP PREVIEW ================= */}
 
-      <section className="section leadership">
-        <div className="container">
-          <div className="section-head reveal">
-            <div>
-              <div className="eyebrow">
-                <i></i>
-                LEADERSHIP
-              </div>
-
-              <h2>
-                Experience that keeps <em>projects moving.</em>
-              </h2>
-            </div>
-
-            <p>
-              The document identifies two experienced professionals leading the
-              proposed 12 TPD CBG project.
-            </p>
-          </div>
-
-          <div className="leaders">
-            {leaders.map((l) => (
-              <article className="leader-card reveal" key={l.name}>
-                <div className="leader-visual">
-                  <div className="portrait-ring">
-                    <span>{l.initials}</span>
-                  </div>
-
-                  <div className="years">
-                    <b>{l.years}</b>
-
-                    <small>
-                      years
-                      <br />
-                      experience
-                    </small>
-                  </div>
-                </div>
-
-                <div className="leader-body">
-                  <div className="leader-role">{l.role}</div>
-
-                  <h3>{l.name}</h3>
-
-                  <p>{l.text}</p>
-
-                  <div className="tag-row">
-                    {l.tags.map((t) => (
-                      <span key={t}>{t}</span>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <div className="home-page-link">
-            <Link to="/leadership" className="text-link">
-              Meet our leadership team <span>↗</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <LeaderGrid compact />
 
       {/* ================= COMMITMENT ================= */}
 
@@ -551,7 +471,7 @@ function Home() {
             Ready to turn a clean-energy idea into a <em>working asset?</em>
           </h2>
 
-          <p>Let’s discuss your Bio-CNG, solar EPC or renewable energy project.</p>
+          <p>Let’s discuss your CBG, solar EPC or renewable energy project.</p>
 
           <Link to="/contact" className="btn light">
             Start a conversation <span>↗</span>
