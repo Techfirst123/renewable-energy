@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Seo from "../components/Seo";
 import ChainFlow from "../components/ChainFlow";
 
 const capabilities = [
@@ -44,6 +45,11 @@ const capabilities = [
 function Capabilities() {
   return (
     <>
+      <Seo
+        title="Our Capabilities | CBG & Solar Project Execution | RREV"
+        description="Project development and DPR, approvals, civil execution, solar EPC and O&M — the capabilities RREV brings to every CBG and solar project."
+      />
+
       {/* HERO */}
       <section className="inner-hero capability-hero">
         <div className="inner-hero-grid"></div>

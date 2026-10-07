@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import Seo from "../components/Seo";
 import HeroSlider from "../components/HeroSlider";
 import ServiceIcons from "../components/ServiceIcons";
 import ValueChain from "../components/ValueChain";
@@ -127,6 +128,11 @@ function ProcessInteractive() {
 
   return (
     <>
+      <Seo
+        title="CBG Plants & Solar EPC in India | RREV"
+        description="RREV builds Compressed Biogas (CBG) plants of 3, 6 and 12 TPD and delivers turnkey solar EPC — feasibility, approvals, execution and O&M."
+      />
+
       <div className="process-track-switch" role="tablist" aria-label="Project type">
         {Object.entries(processTracks).map(([key, t]) => (
           <button

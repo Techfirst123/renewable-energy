@@ -1,9 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Seo from "../components/Seo";
 
 function About() {
   return (
     <>
+      <Seo
+        title="About RREV | Renewable Energy & CBG Project Partner"
+        description="Renewable Rise Energy Venture develops and executes CBG and solar projects in India, led by engineers with 59+ combined years of experience."
+      />
+
       {/* PAGE HERO */}
       <section className="inner-hero">
         <div className="inner-hero-grid"></div>

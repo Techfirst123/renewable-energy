@@ -1,10 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Seo from "../components/Seo";
 import ExecutionTabs from "../components/ExecutionTabs";
 
 function Execution() {
   return (
     <>
+      <Seo
+        title="Project Execution Model | Concept to Commissioning | RREV"
+        description="How RREV executes: six stages from concept to operations, with milestone scheduling, QA/QC, safety and risk mitigation on every project."
+      />
+
       {/* HERO */}
       <section className="inner-hero execution-hero">
         <div className="inner-hero-grid"></div>

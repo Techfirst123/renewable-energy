@@ -16,7 +16,7 @@ const plants = [
     tpd: "3 TPD",
     cbg: "3,000 kg",
     feed: "~100 t/day",
-    cost: "₹22 Cr",
+    cost: "₹21 Cr",
     aid: "up to ₹6 Cr",
     fom: "20 t/day FOM + 60 t/day LFOM",
   },
@@ -24,7 +24,7 @@ const plants = [
     tpd: "6 TPD",
     cbg: "6,000 kg",
     feed: "~200 t/day",
-    cost: "₹36 Cr",
+    cost: "₹33 Cr",
     aid: "up to ₹12 Cr",
     fom: "40 t/day FOM + 120 t/day LFOM",
     featured: true,
@@ -33,7 +33,7 @@ const plants = [
     tpd: "12 TPD",
     cbg: "12,000 kg",
     feed: "~400 t/day",
-    cost: "₹64 Cr",
+    cost: "₹71 Cr",
     aid: "up to ₹24 Cr",
     fom: "80 t/day FOM + 240 t/day LFOM",
   },
@@ -42,11 +42,14 @@ const plants = [
 const economics = [
   ["CBG output / day", "3,000 kg", "6,000 kg", "12,000 kg"],
   ["CBG output / year (350 days)", "10.5 lakh kg", "21 lakh kg", "42 lakh kg"],
-  ["Indicative project cost", "₹22 Cr", "₹36 Cr", "₹64 Cr"],
+  ["Indicative project cost", "₹21 Cr", "₹33 Cr", "₹71 Cr"],
+  ["Cost per TPD", "₹7.0 Cr", "₹5.5 Cr", "₹5.9 Cr"],
   ["GOBARdhan capital assistance", "₹6 Cr", "₹12 Cr", "₹24 Cr"],
+  ["Net cost after assistance", "₹15 Cr", "₹21 Cr", "₹47 Cr"],
   ["Indicative annual revenue", "₹12.8 Cr", "₹25.7 Cr", "₹51.4 Cr"],
   ["Indicative annual surplus", "₹6.0 Cr", "₹12.0 Cr", "₹24.1 Cr"],
   ["By-product (FOM / LFOM) value", "₹1.8 Cr/yr", "₹3.6 Cr/yr", "₹7.3 Cr/yr"],
+  ["Simple payback on net cost", "~2.5 yrs", "~1.7 yrs", "~2.0 yrs"],
 ];
 
 const feedstock = [

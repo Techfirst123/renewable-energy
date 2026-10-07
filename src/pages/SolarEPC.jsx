@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Seo from "../components/Seo";
 import SolarProcess from "../components/SolarProcess";
 
 const services = [
@@ -44,6 +45,11 @@ const services = [
 function SolarEPC() {
   return (
     <>
+      <Seo
+        title="Solar EPC Company | Rooftop & Ground-Mount | RREV"
+        description="Turnkey solar EPC in India: rooftop, ground-mounted and hybrid solar + biogas — survey, design, procurement, installation, net-metering and O&M."
+      />
+
       {/* HERO */}
       <section className="inner-hero solar-hero">
         <div className="inner-hero-grid"></div>

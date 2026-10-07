@@ -1,0 +1,2 @@
+# Netlify: send every route to index.html so deep links work in this single-page app.
+/*  /index.html  200

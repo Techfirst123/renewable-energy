@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Seo from "../components/Seo";
 
 // Add or remove photos here. `type` drives the filter tabs.
 const photos = [
@@ -55,6 +56,11 @@ function Projects() {
 
   return (
     <>
+      <Seo
+        title="Project Gallery | CBG Plants & Solar Installations | RREV"
+        description="Photos of the assets RREV engineers and builds — digesters, gas-holders and gas handling, plus rooftop and ground-mounted solar installations."
+      />
+
       {/* HERO */}
       <section className="inner-hero">
         <div className="inner-hero-grid"></div>

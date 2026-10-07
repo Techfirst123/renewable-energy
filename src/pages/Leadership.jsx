@@ -1,10 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Seo from "../components/Seo";
 import LeaderGrid from "../components/LeaderGrid";
 
 function Leadership() {
   return (
     <>
+      <Seo
+        title="Leadership Team | RREV Renewable Rise Energy Venture"
+        description="Meet RREV's leadership: 29+ years in renewable energy, bioenergy and CBG, and 30+ years in civil engineering and large-project execution."
+      />
+
       {/* HERO */}
       <section className="inner-hero leadership-hero">
         <div className="inner-hero-grid"></div>

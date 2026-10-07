@@ -1,82 +1,21 @@
 import React, { useState } from "react";
-
-// Enquiries are delivered by FormSubmit (no backend needed). The very first
-// submission sends an activation email to this inbox — confirm it once.
-const COMPANY_EMAIL = "asim@rrev.in";
-const FORM_ENDPOINT = `https://formsubmit.co/ajax/${COMPANY_EMAIL}`;
-
-const emptyForm = {
-  name: "",
-  company: "",
-  email: "",
-  phone: "",
-  projectType: "",
-  message: "",
-};
-
-function Req() {
-  return (
-    <span className="req" aria-hidden="true">
-      *
-    </span>
-  );
-}
+import Seo from "../components/Seo";
 
 function Contact() {
-  const [form, setForm] = useState(emptyForm);
-  const [status, setStatus] = useState("idle"); // idle | sending | success | error
-  const [sentName, setSentName] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
-  const update = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (status === "sending") return;
-
-    // Honeypot: bots fill hidden fields, people don't
-    if (e.target.elements._honey?.value) return;
-
-    setStatus("sending");
-
-    try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          _subject: `New RREV enquiry — ${form.projectType} — ${form.name}`,
-          _template: "table",
-          _captcha: "false",
-          _replyto: form.email,
-          Name: form.name.trim(),
-          Company: form.company.trim(),
-          Email: form.email.trim(),
-          Phone: form.phone.trim(),
-          "Project Type": form.projectType,
-          Message: form.message.trim(),
-        }),
-      });
-
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || String(data.success) === "false") {
-        throw new Error(data.message || "Request failed");
-      }
-
-      setSentName(form.name.trim().split(/\s+/)[0]);
-      setForm(emptyForm);
-      setStatus("success");
-    } catch {
-      setStatus("error");
-    }
+    setSubmitted(true);
   };
 
   return (
     <>
+      <Seo
+        title="Contact RREV | CBG Plant & Solar EPC Enquiries"
+        description="Tell us about your CBG plant, solar rooftop or ground-mount project. RREV replies with a scoping call and clear next steps."
+      />
+
       {/* HERO */}
       <section className="inner-hero contact-hero">
         <div className="inner-hero-grid"></div>
@@ -148,103 +87,49 @@ function Contact() {
           </div>
 
           <div className="contact-form-wrap">
-            {status !== "success" ? (
-              <form
-                className="contact-form"
-                onSubmit={handleSubmit}
-                aria-busy={status === "sending"}
-              >
-                <p className="form-note">
-                  All fields are required <Req />
-                </p>
-
-                {/* Honeypot field — hidden from people, catches spam bots */}
-                <input
-                  type="text"
-                  name="_honey"
-                  className="form-honey"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden="true"
-                />
-
+            {!submitted ? (
+              <form className="contact-form" onSubmit={handleSubmit}>
                 <div className="form-row">
                   <label>
-                    <span>
-                      Name <Req />
-                    </span>
+                    Name
                     <input
                       type="text"
-                      name="name"
-                      value={form.name}
-                      onChange={update}
                       placeholder="Your name"
-                      autoComplete="name"
-                      minLength={2}
                       required
                     />
                   </label>
 
                   <label>
-                    <span>
-                      Company <Req />
-                    </span>
+                    Company
                     <input
                       type="text"
-                      name="company"
-                      value={form.company}
-                      onChange={update}
                       placeholder="Company name"
-                      autoComplete="organization"
-                      required
                     />
                   </label>
                 </div>
 
                 <div className="form-row">
                   <label>
-                    <span>
-                      Email <Req />
-                    </span>
+                    Email
                     <input
                       type="email"
-                      name="email"
-                      value={form.email}
-                      onChange={update}
                       placeholder="you@company.com"
-                      autoComplete="email"
                       required
                     />
                   </label>
 
                   <label>
-                    <span>
-                      Phone <Req />
-                    </span>
+                    Phone
                     <input
                       type="tel"
-                      name="phone"
-                      value={form.phone}
-                      onChange={update}
-                      placeholder="+91 98765 43210"
-                      autoComplete="tel"
-                      pattern="\+?[\d\s\(\)\-]{10,18}"
-                      title="Enter a valid phone number (at least 10 digits)"
-                      required
+                      placeholder="+91"
                     />
                   </label>
                 </div>
 
                 <label>
-                  <span>
-                    Project Type <Req />
-                  </span>
-                  <select
-                    name="projectType"
-                    value={form.projectType}
-                    onChange={update}
-                    required
-                  >
+                  Project Type
+                  <select defaultValue="">
                     <option value="" disabled>
                       Select project type
                     </option>
@@ -259,68 +144,41 @@ function Contact() {
                 </label>
 
                 <label>
-                  <span>
-                    Tell us about your project <Req />
-                  </span>
+                  Tell us about your project
                   <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={update}
                     rows="6"
                     placeholder="Briefly describe your requirement..."
-                    minLength={10}
                     required
                   ></textarea>
                 </label>
 
-                {status === "error" && (
-                  <p className="form-error" role="alert">
-                    We couldn't send your enquiry just now. Please try again,
-                    or write to us directly at{" "}
-                    <a href={`mailto:${COMPANY_EMAIL}`}>{COMPANY_EMAIL}</a>.
-                  </p>
-                )}
-
-                <button
-                  type="submit"
-                  className="btn btn-dark"
-                  disabled={status === "sending"}
-                >
-                  {status === "sending" ? (
-                    <>
-                      Sending… <i className="btn-spinner" aria-hidden="true" />
-                    </>
-                  ) : (
-                    <>
-                      Send Enquiry <span>↗</span>
-                    </>
-                  )}
+                <button type="submit" className="btn btn-dark">
+                  Send Enquiry <span>↗</span>
                 </button>
               </form>
             ) : (
-              <div className="form-success" role="status" aria-live="polite">
+              <div className="form-success">
                 <div className="success-icon">✓</div>
 
                 <div className="eyebrow">
                   <i></i>
-                  ENQUIRY SUBMITTED
+                  THANK YOU
                 </div>
 
                 <h3>
-                  Thank you{sentName ? `, ${sentName}` : ""}!
-                  <span> Your form has been submitted successfully.</span>
+                  Your enquiry has been
+                  <span> received.</span>
                 </h3>
 
                 <p>
-                  Your enquiry is now with the Renewable Rise Energy Venture
-                  team. We'll review your requirement and get back to you
-                  within 1–2 business days with the next steps.
+                  Thank you for reaching out to Renewable Rise Energy Venture.
+                  Our team can review your requirement and connect with you
+                  regarding the next steps.
                 </p>
 
                 <button
-                  type="button"
                   className="btn btn-dark"
-                  onClick={() => setStatus("idle")}
+                  onClick={() => setSubmitted(false)}
                 >
                   Send Another Enquiry <span>↗</span>
                 </button>
