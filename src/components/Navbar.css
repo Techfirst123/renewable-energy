@@ -1,0 +1,9 @@
+/* Header logo (image from the RREV brand artwork). Imported by Navbar.jsx. */
+.brand .brand-logo {
+  display: block;
+  height: 62px;
+  width: auto;
+}
+@media (max-width: 900px) {
+  .brand .brand-logo { height: 44px; }
+}

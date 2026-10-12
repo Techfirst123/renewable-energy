@@ -1,0 +1,329 @@
+/* =========================================================
+   HOME HERO SLIDER — Bootstrap-5 style carousel + 3D photo stack
+   Colours fall back to the RREV palette if tokens are missing.
+========================================================= */
+.hx {
+  --hx-navy: var(--dark, #0b1f3a);
+  --hx-amber: var(--accent, #f5b324);
+  --hx-blue: var(--brand, #1463b8);
+  --hx-green: var(--bio, #2f9e5f);
+  --hx-tone: var(--hx-amber);
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 680px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--hx-navy);
+  color: #fff;
+  font-family: var(--font-body, "DM Sans", system-ui, sans-serif);
+}
+.hx.tone-bio { --hx-tone: #7fd6a2; }
+.hx.tone-brand { --hx-tone: #7db7ff; }
+
+/* ---------- slides ---------- */
+.hx-slides { position: absolute; inset: 0; z-index: -3; }
+.hx-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity 1.2s ease, transform 7s ease-out;
+}
+.hx-slide.active { opacity: 1; transform: scale(1); }
+
+.hx-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(90deg, rgba(8, 20, 40, 0.94) 0%, rgba(8, 20, 40, 0.78) 42%, rgba(8, 20, 40, 0.35) 75%, rgba(8, 20, 40, 0.55) 100%),
+    linear-gradient(0deg, rgba(8, 20, 40, 0.9) 0%, rgba(8, 20, 40, 0) 38%);
+}
+
+/* 3D perspective grid "floor" */
+.hx-floor {
+  position: absolute;
+  left: -25%;
+  right: -25%;
+  bottom: -2px;
+  height: 46%;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(125, 183, 255, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125, 183, 255, 0.22) 1px, transparent 1px);
+  background-size: 64px 64px;
+  transform: perspective(520px) rotateX(62deg);
+  transform-origin: bottom center;
+  -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 85%);
+  mask-image: linear-gradient(to top, #000 10%, transparent 85%);
+  animation: hx-floor 14s linear infinite;
+}
+@keyframes hx-floor { to { background-position: 0 64px, 0 0; } }
+
+/* ---------- layout ---------- */
+.hx-inner {
+  width: min(1160px, calc(100% - 48px));
+  margin: 0 auto;
+  padding-block: 90px 180px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 56px;
+  align-items: center;
+}
+
+/* ---------- copy ---------- */
+.hx-copy { animation: hx-in 0.8s ease both; }
+@keyframes hx-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+.hx-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.hx-badge i {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--hx-tone);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--hx-tone) 30%, transparent);
+}
+
+.hx h1 {
+  margin: 22px 0 18px;
+  font-family: var(--font-display, "Manrope", system-ui, sans-serif);
+  font-size: clamp(40px, 5.4vw, 72px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: #fff;
+  text-wrap: balance;
+}
+.hx h1 em { font-style: normal; color: var(--hx-tone); }
+.hx-copy > p {
+  max-width: 540px;
+  margin: 0;
+  font-size: 17.5px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.hx-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 32px 0 38px; }
+.hx-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 24px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.hx-btn:hover { transform: translateY(-2px); }
+.hx-btn-primary {
+  background: var(--hx-amber);
+  color: #1c1400;
+  box-shadow: 0 12px 30px rgba(245, 179, 36, 0.35);
+}
+.hx-btn-primary:hover { box-shadow: 0 16px 36px rgba(245, 179, 36, 0.45); }
+.hx-btn-glass {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.hx-btn-glass:hover { background: rgba(255, 255, 255, 0.16); }
+
+.hx-stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 560px;
+}
+.hx-stats li {
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.hx-stats b {
+  display: block;
+  font-family: var(--font-display, "Manrope", system-ui, sans-serif);
+  font-size: 22px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.hx-stats span { font-size: 12.5px; line-height: 1.35; color: rgba(255, 255, 255, 0.7); }
+
+/* ---------- 3D photo stack ---------- */
+.hx-stack {
+  position: relative;
+  height: 440px;
+  perspective: 1400px;
+}
+.hx-card {
+  position: absolute;
+  margin: 0;
+  width: 62%;
+  aspect-ratio: 4 / 5;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0b1f3a;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(.2,.7,.2,1), box-shadow 0.4s;
+}
+.hx-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hx-card figcaption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(8, 20, 40, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.hx-card-1 { left: 0;   top: 40px; z-index: 1; transform: rotateY(24deg) rotateX(6deg) translateZ(-120px); }
+.hx-card-2 { left: 19%; top: 10px; z-index: 3; transform: rotateY(-14deg) rotateX(4deg) translateZ(40px); }
+.hx-card-3 { left: 38%; top: 60px; z-index: 2; transform: rotateY(-28deg) rotateX(6deg) translateZ(-60px); }
+.hx-stack:hover .hx-card-1 { transform: rotateY(14deg) translateZ(-80px) translateX(-24px); }
+.hx-stack:hover .hx-card-2 { transform: rotateY(0deg) translateZ(80px); }
+.hx-stack:hover .hx-card-3 { transform: rotateY(-16deg) translateZ(-40px) translateX(24px); }
+
+.hx-chip {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: #fff;
+  color: #0b1f3a;
+  font-size: 14px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  animation: hx-bob 5s ease-in-out infinite;
+}
+.hx-chip b:first-child { color: var(--hx-green); }
+.hx-chip b:last-child { color: #b87a00; }
+.hx-chip span { opacity: 0.4; font-weight: 700; }
+@keyframes hx-bob { 50% { transform: translateY(-8px); } }
+
+/* ---------- controls (Bootstrap-style bar indicators) ---------- */
+.hx-controls {
+  position: absolute;
+  left: 50%;
+  bottom: 84px;                 /* clears the service-icon strip that overlaps the hero */
+  transform: translateX(-50%);
+  width: min(1160px, calc(100% - 48px));
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+.hx-indicators { display: flex; gap: 14px; flex: 1; max-width: 560px; }
+.hx-indicators button {
+  flex: 1;
+  padding: 0 0 4px;
+  border: 0;
+  background: none;
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+}
+.hx-indicators button > span {
+  display: block;
+  height: 3px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+.hx-indicators button.active > span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--hx-amber);
+  transform-origin: left;
+  animation: hx-progress linear forwards;
+  animation-duration: inherit;
+}
+.hx.is-paused .hx-indicators button.active > span::after { animation-play-state: paused; }
+@keyframes hx-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.hx-indicators em { font-style: normal; font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.hx-indicators button.active em { color: #fff; }
+
+.hx-arrows { display: flex; align-items: center; gap: 10px; }
+.hx-count { margin-right: 6px; font-size: 13px; color: rgba(255, 255, 255, 0.7); font-variant-numeric: tabular-nums; }
+.hx-arrows button {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.2s, border-color 0.2s;
+}
+.hx-arrows button:hover { background: var(--hx-amber); border-color: var(--hx-amber); color: #1c1400; }
+
+.hx :focus-visible { outline: 3px solid var(--hx-amber); outline-offset: 3px; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 991px) {
+  .hx-inner { grid-template-columns: 1fr; gap: 40px; padding-block: 70px 190px; }
+  .hx-stack { height: 300px; max-width: 520px; }
+  .hx-card { width: 56%; }
+}
+@media (max-width: 600px) {
+  .hx { min-height: 0; }
+  .hx-inner { width: calc(100% - 32px); padding-block: 56px 150px; }
+  .hx-stats { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .hx-stats li { padding: 10px; }
+  .hx-stats b { font-size: 17px; }
+  /* flat thumbnail row instead of the 3D stack on phones */
+  .hx-stack { height: auto; perspective: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .hx-card, .hx-stack:hover .hx-card { position: relative; left: auto; top: auto; width: auto; aspect-ratio: 1; transform: none; border-radius: 12px; }
+  .hx-card figcaption, .hx-chip { display: none; }
+  .hx-controls { flex-direction: column; align-items: stretch; width: calc(100% - 32px); bottom: 22px; }
+  .hx-inner { padding-block: 56px 150px; }
+  .hx-indicators em { display: none; }
+  .hx-arrows { justify-content: flex-end; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hx-slide, .hx-card, .hx-copy, .hx-chip, .hx-floor { transition: none !important; animation: none !important; }
+  .hx-slide.active { transform: none; }
+}

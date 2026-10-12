@@ -1,0 +1,215 @@
+/* =========================================================
+   VALUE CHAIN — dark premium band with glass stage cards
+   Colours fall back to the RREV palette if tokens are missing.
+========================================================= */
+.vc {
+  --vc-navy: var(--dark, #0b1f3a);
+  --vc-amber: var(--accent, #f5b324);
+  --vc-green: var(--bio, #2f9e5f);
+  --vc-green-light: var(--bio-light, #7fd6a2);
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(72px, 9vw, 120px);
+  background: var(--vc-navy);
+  color: #fff;
+  font-family: var(--font-body, "DM Sans", system-ui, sans-serif);
+}
+
+/* soft light behind the cards + faint grid, for depth */
+.vc-glow {
+  position: absolute;
+  z-index: -1;
+  right: -10%;
+  top: -20%;
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(47, 158, 95, 0.22), transparent 65%);
+  filter: blur(10px);
+}
+.vc-grid-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.5;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: radial-gradient(ellipse at 30% 40%, #000 20%, transparent 78%);
+  mask-image: radial-gradient(ellipse at 30% 40%, #000 20%, transparent 78%);
+}
+
+.vc-inner {
+  width: min(1160px, calc(100% - 48px));
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
+  gap: clamp(36px, 5vw, 72px);
+  align-items: start;
+}
+
+/* ---------- heading ---------- */
+.vc-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--vc-amber);
+}
+.vc-eyebrow i { width: 26px; height: 1px; background: currentColor; }
+
+.vc h2 {
+  margin: 20px 0 18px;
+  font-family: var(--font-display, "Manrope", system-ui, sans-serif);
+  font-size: clamp(32px, 4vw, 54px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  color: #fff;
+  text-wrap: balance;
+}
+.vc h2 em {
+  font-style: normal;
+  background: linear-gradient(100deg, var(--vc-green-light), var(--vc-amber));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.vc-head p {
+  margin: 0;
+  max-width: 44ch;
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.68);
+}
+.vc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+  padding-bottom: 6px;
+  font-weight: 700;
+  font-size: 14.5px;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  transition: border-color 0.25s, gap 0.25s;
+}
+.vc-link span { color: var(--vc-amber); }
+.vc-link:hover { border-color: var(--vc-amber); gap: 14px; }
+
+/* ---------- stage cards ---------- */
+.vc-stages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 178px), 1fr));
+  gap: 14px;
+  counter-reset: stage;
+}
+.vc-card {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 26px 22px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  animation: vc-rise 0.7s cubic-bezier(.2,.7,.2,1) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+@keyframes vc-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.vc-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(245, 179, 36, 0.55);
+  box-shadow: 0 26px 55px rgba(0, 0, 0, 0.4);
+}
+
+.vc-no {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-family: var(--font-display, "Manrope", system-ui, sans-serif);
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.1);
+  transition: color 0.35s ease;
+}
+.vc-card:hover .vc-no { color: rgba(245, 179, 36, 0.35); }
+
+.vc-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(47, 158, 95, 0.16);
+  border: 1px solid rgba(127, 214, 162, 0.3);
+  color: var(--vc-green-light);
+  transition: background 0.35s, color 0.35s, border-color 0.35s;
+}
+.vc-icon svg { width: 24px; height: 24px; }
+.vc-card:hover .vc-icon {
+  background: rgba(245, 179, 36, 0.16);
+  border-color: rgba(245, 179, 36, 0.4);
+  color: var(--vc-amber);
+}
+
+.vc-card h3 {
+  margin: 4px 0 0;
+  font-family: var(--font-display, "Manrope", system-ui, sans-serif);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+.vc-card p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* connector arrow between cards (desktop only) */
+.vc-arrow {
+  position: absolute;
+  right: -11px;
+  top: 34px;
+  z-index: 2;
+  font-size: 14px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* no arrow at the end of a row */
+.vc-card:nth-child(3n) .vc-arrow { display: none; }
+
+@media (max-width: 991px) {
+  .vc-inner { grid-template-columns: 1fr; }
+  .vc-head p { max-width: 60ch; }
+}
+@media (max-width: 720px) {
+  .vc-arrow { display: none; }
+  .vc-stages { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .vc-card { padding: 20px 16px; }
+  .vc-no { font-size: 24px; top: 12px; right: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vc-card { animation: none; transition: none; }
+}
